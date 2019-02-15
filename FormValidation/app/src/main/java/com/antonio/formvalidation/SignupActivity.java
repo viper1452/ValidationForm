@@ -7,15 +7,21 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class SignupActivity extends AppCompatActivity {
     EditText etUN, etPW, etCPW, etFN;
     String username, password, cpassword, fullname;
+
+    DbHelper db;
     int formsuccess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        db = new DbHelper(this);
 
         etUN = findViewById(R.id.etUN);
         etPW = findViewById(R.id.etPW);
@@ -60,11 +66,13 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (fullname.equals("")) {
                     etFN.setError("This Field is Required");
-                    formsuccess--;
+                    formsuccess--;s
                 }
                 if (formsuccess == 2){
-                Toast.makeText(this, "Validation Successful", Toast.LENGTH_SHORT).show();
-                    this.finish();
+                    HashMap<String, String> map_user = new HashMap<>();
+                    map_user.put(db.TBL_USER_ID)
+
+                this.finish();
                 }
 
                 break;
